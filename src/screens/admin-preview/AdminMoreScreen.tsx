@@ -24,7 +24,7 @@ const quickLinks = [
   { title: 'Product Moderation', subtitle: 'Catalog review queue', route: 'ProductModeration', icon: 'shield-check-outline', parentRoute: true },
   { title: 'Home Banners', subtitle: 'Promos shown on the user home screen', route: ROUTES.AdminBanners, icon: 'image-outline', parentRoute: true },
   { title: 'Seller Approvals', subtitle: 'Review applications', route: ROUTES.SellerApprovals, icon: 'store-check-outline', parentRoute: false },
-  { title: 'Return Requests', subtitle: 'Approve or reject returns', route: ROUTES.AdminReturns, icon: 'backup-restore-outline', parentRoute: false },
+  { title: 'Return Requests', subtitle: 'View return request conversations', route: ROUTES.AdminReturns, icon: 'backup-restore-outline', parentRoute: false },
   { title: 'Support Inbox', subtitle: 'Chat with customers', route: ROUTES.AdminSupportInbox, icon: 'message-text-outline', parentRoute: true },
   { title: 'Logout', subtitle: 'Sign out of admin', route: ROUTES.Login, icon: 'logout', parentRoute: false }
 ] as const;

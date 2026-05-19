@@ -9,13 +9,8 @@ import { Screen } from '@/components/common/Screen';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { SectionCard } from '@/components/layout/SectionCard';
 import { AppText } from '@/components/common/AppText';
-import { AppButton } from '@/components/common/AppButton';
 import { AppTheme } from '@/theme';
 import { useGetReturnRequestsOverviewQuery } from '@/store/api/adminApi';
-import { useReviewReturnRequestMutation } from '@/store/api/returnApi';
-import { showFeedback } from '@/store/slices/feedbackSlice';
-import { useAppDispatch } from '@/store/hooks';
-import { executeWithOfflineQueue } from '@/services/offlineQueue';
 import { formatCurrency } from '@/utils/format';
 import { ROUTES } from '@/constants/navigation';
 
@@ -54,27 +49,11 @@ const formatTime = (value?: string | Date | null) => {
 
 export function ReturnRequestsScreen() {
   const navigation = useNavigation<any>();
-  const dispatch = useAppDispatch();
   const { data, isLoading, isFetching, refetch } = useGetReturnRequestsOverviewQuery(undefined, {
     refetchOnFocus: true,
     refetchOnReconnect: true
   });
-  const [reviewReturnRequest, { isLoading: saving }] = useReviewReturnRequestMutation();
   const requests = data?.data ?? data ?? [];
-
-  const decide = (id: string, status: 'APPROVED' | 'REJECTED') => {
-    void executeWithOfflineQueue({
-      type: 'admin.reviewReturnRequest',
-      payload: { id, body: { status, resolutionNote: status === 'APPROVED' ? 'Approved by admin' : 'Rejected by admin' } },
-      action: () => reviewReturnRequest({ id, status, resolutionNote: status === 'APPROVED' ? 'Approved by admin' : 'Rejected by admin' }).unwrap()
-    })
-      .then((result) => dispatch(showFeedback({
-        type: result.queued ? 'info' : 'success',
-        title: 'Request updated',
-        message: result.queued ? 'Saved offline. It will sync automatically.' : 'Return request reviewed.'
-      })))
-      .catch((error: any) => dispatch(showFeedback({ type: 'error', title: 'Action failed', message: error?.data?.message ?? error?.data?.error ?? 'Try again.' })));
-  };
 
   return (
     <Screen>
@@ -126,6 +105,18 @@ export function ReturnRequestsScreen() {
                 </SectionCard>
               ) : null}
 
+              {item.supportThread ? (
+                <SectionCard style={styles.messageCard}>
+                  <AppText variant="small" tone="soft">Linked conversation</AppText>
+                  <AppText variant="body" numberOfLines={3}>
+                    {item.supportThread.latestMessage?.message ?? 'No conversation message yet'}
+                  </AppText>
+                  <AppText variant="small" tone="soft">
+                    {item.supportThread.latestMessage?.senderName ?? item.supportThread.customerLabel ?? 'Customer'}
+                  </AppText>
+                </SectionCard>
+              ) : null}
+
               {item.supportThreadId ? (
                 <Pressable
                   onPress={() => navigation.navigate(ROUTES.AdminSupportThread, { threadId: item.supportThreadId })}
@@ -135,19 +126,14 @@ export function ReturnRequestsScreen() {
                     <Ionicons name="chatbubble-ellipses-outline" size={18} color={AppTheme.colors.primary} />
                   </View>
                   <View style={{ flex: 1 }}>
-                    <AppText variant="label">Open Chat</AppText>
-                    <AppText variant="small" tone="soft">Ask questions, share notes, and close when done.</AppText>
+                    <AppText variant="label">Open Linked Chat</AppText>
+                    <AppText variant="small" tone="soft">View the conversation attached to this return request.</AppText>
                   </View>
                   <Ionicons name="chevron-forward" size={18} color={AppTheme.colors.textSoft} />
                 </Pressable>
               ) : (
-                <AppText variant="small" tone="soft">Chat thread will appear here after the request is created.</AppText>
+                <AppText variant="small" tone="soft">Linked chat will appear here after the request is created.</AppText>
               )}
-
-              <View style={styles.actionRow}>
-                <AppButton title="Approve" onPress={() => decide(item.id, 'APPROVED')} loading={saving} />
-                <AppButton title="Reject" variant="secondary" onPress={() => decide(item.id, 'REJECTED')} loading={saving} />
-              </View>
 
               {Array.isArray(item.photoUrls) && item.photoUrls.length ? (
                 <View style={styles.photoRow}>
@@ -214,9 +200,9 @@ const styles = StyleSheet.create({
     gap: 6,
     backgroundColor: AppTheme.colors.surfaceSoft
   },
-  actionRow: {
-    flexDirection: 'row',
-    gap: AppTheme.spacing.sm
+  messageCard: {
+    gap: 6,
+    backgroundColor: AppTheme.colors.surfaceSoft
   },
   chatLink: {
     flexDirection: 'row',

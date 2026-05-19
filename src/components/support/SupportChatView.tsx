@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FlatList, KeyboardAvoidingView, Platform, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
@@ -195,7 +195,7 @@ export function SupportChatView({
                       <View style={styles.systemMeta}>
                         <Ionicons name="information-circle-outline" size={16} color={AppTheme.colors.primary} />
                         <AppText variant="small" tone="primary" style={styles.systemLabel}>
-                          Shopora Support
+                          NovaMart Support
                         </AppText>
                       </View>
                     ) : (
@@ -569,3 +569,4 @@ const styles = StyleSheet.create({
     opacity: 0.78
   }
 });
+

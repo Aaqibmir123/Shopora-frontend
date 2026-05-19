@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 import React, { useMemo, useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -80,7 +80,7 @@ export function LoginScreen({ navigation }: Props) {
           <View style={styles.glowB} />
 
           <View style={styles.topBar}>
-            <AppText variant="headline" style={styles.brandText}>Shopora</AppText>
+            <AppText variant="headline" style={styles.brandText}>NovaMart</AppText>
           </View>
 
           <View style={styles.card}>
@@ -142,7 +142,7 @@ export function LoginScreen({ navigation }: Props) {
               <Pressable onPress={() => navigation.navigate(ROUTES.PrivacyPolicy)} style={styles.policyLink}>
                 <AppText variant="small" style={styles.policyText}>Privacy Policy</AppText>
               </Pressable>
-              <AppText variant="small" tone="soft">•</AppText>
+              <AppText variant="small" tone="soft">â€¢</AppText>
               <Pressable onPress={() => navigation.navigate(ROUTES.TermsConditions)} style={styles.policyLink}>
                 <AppText variant="small" style={styles.policyText}>Terms & Conditions</AppText>
               </Pressable>
@@ -305,3 +305,4 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.99 }]
   }
 });
+

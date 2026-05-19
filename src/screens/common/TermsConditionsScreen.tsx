@@ -37,7 +37,7 @@ const sections = [
     title: 'Account and liability',
     items: [
       'Keep your login details safe and log out from shared devices.',
-      'Shopora is not liable for misuse caused by sharing your account.',
+      'NovaMart is not liable for misuse caused by sharing your account.',
       'We can update these terms when needed to keep the platform secure.'
     ]
   }
@@ -54,16 +54,16 @@ export function TermsConditionsScreen() {
           <View style={styles.topText}>
             <AppText variant="display" style={styles.title}>Terms & Conditions</AppText>
             <AppText variant="body" tone="soft" style={styles.subtitle}>
-              Simple rules for using Shopora safely and fairly.
+              Simple rules for using NovaMart safely and fairly.
             </AppText>
           </View>
         </View>
 
         <View style={styles.heroCard}>
-          <AppText variant="headline" style={styles.heroTitle}>Please read before using Shopora</AppText>
+          <AppText variant="headline" style={styles.heroTitle}>Please read before using NovaMart</AppText>
           <AppText variant="body" tone="soft" style={styles.heroText}>
             These terms explain how you can use the app, place orders, and interact with sellers, admin, and support.
-            By continuing to use Shopora, you agree to these rules.
+            By continuing to use NovaMart, you agree to these rules.
           </AppText>
         </View>
 
@@ -181,3 +181,4 @@ const styles = StyleSheet.create({
     lineHeight: 22
   }
 });
+

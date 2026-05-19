@@ -147,7 +147,7 @@ export function OtpScreen({ navigation, route }: Props) {
           keyboardDismissMode="on-drag"
         >
           <View style={styles.topBar}>
-            <AppText variant="headline" style={styles.brandText}>Shopora</AppText>
+            <AppText variant="headline" style={styles.brandText}>NovaMart</AppText>
           </View>
 
           <View style={styles.card}>
@@ -358,3 +358,4 @@ const styles = StyleSheet.create({
     lineHeight: 20
   }
 });
+

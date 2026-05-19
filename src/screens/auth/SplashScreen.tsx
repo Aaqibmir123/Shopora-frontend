@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { Image, Pressable, StatusBar, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
@@ -66,7 +66,7 @@ export function SplashScreen({ navigation }: Props) {
         <View style={[styles.orb, styles.orbB]} />
         <View style={styles.topBrand}>
           <Image source={LOGO} style={styles.brandLogo} resizeMode="contain" />
-          <AppText variant="title" tone="white" style={styles.brandText}>Shopora</AppText>
+          <AppText variant="title" tone="white" style={styles.brandText}>NovaMart</AppText>
         </View>
 
         <View style={[styles.heroWrap, width >= 768 && styles.heroWrapWide]}>
@@ -229,3 +229,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF6B00'
   }
 });
+

@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 import React, { useMemo } from 'react';
 import { View, StyleSheet, ScrollView, FlatList, Pressable, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
@@ -137,7 +137,7 @@ export function HomeScreen({ navigation }: Props) {
         <View style={styles.header}>
           <View>
             <AppText variant="small" tone="soft">Good morning</AppText>
-            <AppText variant="headline">Shopora</AppText>
+            <AppText variant="headline">NovaMart</AppText>
           </View>
           <View style={styles.headerActions}>
             <Pressable style={styles.iconButton} onPress={() => navigation.navigate(ROUTES.Notifications)}>
@@ -303,7 +303,7 @@ export function HomeScreen({ navigation }: Props) {
         ) : null}
 
         <View style={styles.footerCard}>
-          <AppText variant="headline" tone="primary">Shopora</AppText>
+          <AppText variant="headline" tone="primary">NovaMart</AppText>
           <AppText variant="body" tone="soft" style={{ marginTop: AppTheme.spacing.sm }}>
             The world&apos;s premium marketplace for fashion, beauty, tech, and more.
           </AppText>
@@ -453,3 +453,4 @@ const styles = StyleSheet.create({
     backgroundColor: AppTheme.colors.primaryContainer
   }
 });
+

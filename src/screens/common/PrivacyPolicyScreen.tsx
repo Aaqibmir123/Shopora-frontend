@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -14,7 +14,7 @@ const sections = [
     items: [
       'Phone number and profile details you add.',
       'Order, address, and support conversation data.',
-      'App usage signals to keep Shopora working smoothly.'
+      'App usage signals to keep NovaMart working smoothly.'
     ]
   },
   {
@@ -54,7 +54,7 @@ export function PrivacyPolicyScreen({ navigation }: Props) {
           <View style={styles.topText}>
             <AppText variant="display" style={styles.title}>Privacy Policy</AppText>
             <AppText variant="body" tone="soft" style={styles.subtitle}>
-              Clear, simple rules for how Shopora handles your data.
+              Clear, simple rules for how NovaMart handles your data.
             </AppText>
           </View>
         </View>
@@ -181,3 +181,4 @@ const styles = StyleSheet.create({
     lineHeight: 22
   }
 });
+

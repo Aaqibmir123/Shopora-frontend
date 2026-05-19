@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, StyleSheet, Pressable, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -56,7 +56,7 @@ const items = [
     soft: '#F2ECFF'
   },
   {
-    title: 'Sell on Shopora',
+    title: 'Sell on NovaMart',
     subtitle: 'Apply for your seller store',
     route: ROUTES.SellerStack,
     accent: '#D97706',
@@ -64,7 +64,7 @@ const items = [
   },
   {
     title: 'Help Center',
-    subtitle: 'Chat with Shopora support',
+    subtitle: 'Chat with NovaMart support',
     route: ROUTES.HelpSupport,
     accent: '#0E7490',
     soft: '#E8F9FC'
@@ -239,3 +239,4 @@ const styles = StyleSheet.create({
     backgroundColor: AppTheme.colors.surface
   }
 });
+

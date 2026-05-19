@@ -1,6 +1,6 @@
-{
+﻿{
   "expo": {
-    "name": "Shopora",
+    "name": "NovaMart",
     "slug": "shopora-marketplace",
     "scheme": "shopora",
     "version": "1.0.0",
@@ -24,3 +24,4 @@
     "web": {}
   }
 }
+

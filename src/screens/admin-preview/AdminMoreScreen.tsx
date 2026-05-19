@@ -7,7 +7,6 @@ import { Screen } from '@/components/common/Screen';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { SectionCard } from '@/components/layout/SectionCard';
 import { AppText } from '@/components/common/AppText';
-import { AppButton } from '@/components/common/AppButton';
 import { AppTheme } from '@/theme';
 import { ROUTES } from '@/constants/navigation';
 import { useMeQuery } from '@/store/api/authApi';
@@ -26,7 +25,8 @@ const quickLinks = [
   { title: 'Home Banners', subtitle: 'Promos shown on the user home screen', route: ROUTES.AdminBanners, icon: 'image-outline', parentRoute: true },
   { title: 'Seller Approvals', subtitle: 'Review applications', route: ROUTES.SellerApprovals, icon: 'store-check-outline', parentRoute: false },
   { title: 'Return Requests', subtitle: 'Approve or reject returns', route: ROUTES.AdminReturns, icon: 'backup-restore-outline', parentRoute: false },
-  { title: 'Support Inbox', subtitle: 'Chat with customers', route: ROUTES.AdminSupportInbox, icon: 'message-text-outline', parentRoute: true }
+  { title: 'Support Inbox', subtitle: 'Chat with customers', route: ROUTES.AdminSupportInbox, icon: 'message-text-outline', parentRoute: true },
+  { title: 'Logout', subtitle: 'Sign out of admin', route: ROUTES.Login, icon: 'logout', parentRoute: false }
 ] as const;
 
 export function AdminMoreScreen({ navigation }: any) {
@@ -89,7 +89,11 @@ export function AdminMoreScreen({ navigation }: any) {
           <AppText variant="title">Quick actions</AppText>
           <View style={styles.quickGrid}>
             {quickLinks.map((item) => (
-              <Pressable key={item.title} onPress={() => navigateTo(item.route as string, Boolean(item.parentRoute))} style={styles.quickCard}>
+              <Pressable
+                key={item.title}
+                onPress={() => (item.title === 'Logout' ? logout() : navigateTo(item.route as string, Boolean(item.parentRoute)))}
+                style={styles.quickCard}
+              >
                 <View style={styles.quickIcon}>
                   <MaterialCommunityIcons name={item.icon as any} size={20} color={AppTheme.colors.primary} />
                 </View>
@@ -100,7 +104,6 @@ export function AdminMoreScreen({ navigation }: any) {
           </View>
         </SectionCard>
 
-        <AppButton title="Logout" variant="secondary" onPress={logout} />
       </ScrollView>
     </Screen>
   );

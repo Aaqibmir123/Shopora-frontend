@@ -100,28 +100,6 @@ export function AdminMoreScreen({ navigation }: any) {
           </View>
         </SectionCard>
 
-        <SectionCard>
-          <AppText variant="title">Admin utilities</AppText>
-          <View style={styles.utilityList}>
-            <Pressable style={styles.utilityRow} onPress={() => navigateTo(ROUTES.RevenueAnalytics)}>
-              <AppText variant="body">Revenue dashboard</AppText>
-              <Ionicons name="chevron-forward" size={18} color={AppTheme.colors.primary} />
-            </Pressable>
-            <Pressable style={styles.utilityRow} onPress={() => navigateTo(ROUTES.OrdersOverview)}>
-              <AppText variant="body">Orders overview</AppText>
-              <Ionicons name="chevron-forward" size={18} color={AppTheme.colors.primary} />
-            </Pressable>
-            <Pressable style={styles.utilityRow} onPress={() => navigateTo(ROUTES.AdminReturns)}>
-              <AppText variant="body">Return requests</AppText>
-              <Ionicons name="chevron-forward" size={18} color={AppTheme.colors.primary} />
-            </Pressable>
-            <Pressable style={styles.utilityRow} onPress={() => navigateTo(ROUTES.AdminBanners, true)}>
-              <AppText variant="body">Home banners</AppText>
-              <Ionicons name="chevron-forward" size={18} color={AppTheme.colors.primary} />
-            </Pressable>
-          </View>
-        </SectionCard>
-
         <AppButton title="Logout" variant="secondary" onPress={logout} />
       </ScrollView>
     </Screen>
@@ -178,13 +156,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: AppTheme.colors.surface
   },
-  utilityList: {
-    gap: AppTheme.spacing.sm
-  },
-  utilityRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: AppTheme.spacing.sm
-  }
 });
